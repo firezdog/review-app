@@ -17,6 +17,7 @@ def index():
     if request.method == 'GET':
         return render_template("index.html")
     else:
+        db = get_db()
         return jsonify(request.form)
 
 

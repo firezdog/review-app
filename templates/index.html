@@ -5,23 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='node_modules/bulma/css/bulma.min.css')}}"></style>
 </head>
 <body>
-  <h1>Add Customer</h1>
-  <form method="POST">
-    <div>
-      <label>Customer ID: <input type="text" name="customer_id"/></label>
+  <div class="hero">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+            Add Customer
+        </h1>      
+      </div>
     </div>
-    <div>
-      <label>Customer Name: <input type="text" name="customer_name"/></label>
+  </div>
+  <form class="container" action="/" method="POST">
+    <div class="field">
+      <label class="label">Customer ID:</label>
+      <div class="control">
+          <input class="input" type="text" name="customer_id"/>
+      </div>
     </div>
-    <button>Submit</button>
-  </form>
+    <div class="field">
+      <label class="label">Customer Name:</label>
+      <div class="control">
+          <input class="input" type="text" name="customer_name"/>
+      </div>
+    </div>
+    <button class="button">Submit</button>
+  </form>    
 </body>
 </html>
-
-<style>
-  form div {
-    margin-bottom: 10px;
-  }
-</style>
