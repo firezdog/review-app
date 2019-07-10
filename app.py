@@ -1,5 +1,5 @@
 import sqlite3
-from flask import Flask, render_template, g
+from flask import Flask, render_template, g, request, jsonify
 app = Flask(__name__)
 
 DATABASE = './database.db'
@@ -12,10 +12,12 @@ def get_db():
     return db
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    db = get_db()
-    return render_template("index.html")
+    if request.method == 'GET':
+        return render_template("index.html")
+    else:
+        return jsonify(request.form)
 
 
 @app.teardown_appcontext
