@@ -2,6 +2,6 @@ venv
 __pycache__
 .vscode
 .python-version
-database.db
+*.db
 package-lock.json
 node_modules
