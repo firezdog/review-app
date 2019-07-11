@@ -23,7 +23,6 @@ class Customer(db.Model):
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'GET':
-        context = {}
         customers = Customer.query.all()
         return render_template("index.html", customers=customers)
     else:
