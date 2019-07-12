@@ -32,6 +32,11 @@ def index():
         db.session.commit()
         return redirect('/')
 
+@app.route('/customer/<customer_id>')
+def profile(customer_id):
+    customer = Customer.query.get(customer_id)
+    return render_template("customer.html", customer=customer)
+
 
 if __name__ == '__main__':
     db.create_all()
