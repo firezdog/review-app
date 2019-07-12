@@ -20,7 +20,7 @@
     </div>
   </div>
 </div>
-<form class="container" action="/customer/{{customer.id}}" method="POST">
+<form class="container" action="/customer/{{ customer.id }}" method="POST">
   <div class="field">
     <label class="label">Completion Date:</label>
     <div class="control">
@@ -36,7 +36,7 @@
   <div class="field">
     <label class="label">Risk Category:</label>
     <div class="select">
-      <select name="risk">
+      <select name="review_risk">
         <option value="high">High Risk</option>
         <option value="medium">Medium Risk</option>
         <option value="low">Low Risk</option>
@@ -44,9 +44,8 @@
     </div>
   </div>
   <div class="field">
-    <textarea class="textarea" placeholder="Additional Notes" name="notes"></textarea>
+    <textarea class="textarea" placeholder="Additional Notes" name="review_notes"></textarea>
   </div>
   <button class="button">Submit</button>
 </form>
-
 {% include 'footer.html' %}
