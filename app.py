@@ -1,3 +1,4 @@
+#!./venv/bin/python3
 import os
 import datetime
 import time
@@ -59,14 +60,25 @@ def add_customer():
     db.session.add(new_review)
     db.session.commit()
     return redirect('/')
+    
 
-
-@app.route('/customer/<customer_id>')
+@app.route('/customer/<customer_id>', methods=["GET", "POST"])
 def profile(customer_id):
-    customer = Customer.query.get(customer_id)
-    return render_template("customer.html", customer=customer)
-
+    if request.method == "GET":
+        customer = Customer.query.get(customer_id)
+        reviews = Review.query.filter_by(customer=customer.id).all() 
+        return render_template("customer.html", customer=customer, reviews=reviews)
+    new_review = Review(
+        completion_date=datetime.datetime.strptime(request.form['review_date'], '%Y-%m-%d').date(),
+        department=request.form['review_department'],
+        risk_category=request.form['review_risk'],
+        note=request.form['review_notes'],
+        customer=customer_id,
+    )
+    db.session.add(new_review)
+    db.session.commit()
+    return redirect('/customer/%s' % customer_id)
 
 if __name__ == '__main__':
     db.create_all()
-    app.run(debug=True)
+    app.run('0.0.0.0', port=5000, debug=True)

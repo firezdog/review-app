@@ -15,6 +15,37 @@
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
+          Reviews
+      </h1>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <table class="table is-striped is-hoverable is-fullwidth">
+    <thead>
+      <tr>
+        <th>Completion Date</th>
+        <th>Department</th>
+        <th>Risk</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for review in reviews %}
+      <tr>
+        <td>{{ review.completion_date}} </td>
+        <td>{{ review.department }}</td>
+        <td>{{ review.risk_category }}</td>
+        <td>{{ review.note }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<div class="hero">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
           Add A Review
       </h1>
     </div>
